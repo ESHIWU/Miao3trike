@@ -1,0 +1,129 @@
+<html>
+<head>
+<title>VolumeKeyAccessibilityService.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+.s4 { color: #7a7e85;}
+.s5 { color: #5f826b; font-style: italic;}
+.s6 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+VolumeKeyAccessibilityService.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">com</span><span class="s2">.</span><span class="s1">example</span><span class="s2">.</span><span class="s1">volumekeymapper</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">android</span><span class="s2">.</span><span class="s1">accessibilityservice</span><span class="s2">.</span><span class="s1">AccessibilityService</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">android</span><span class="s2">.</span><span class="s1">content</span><span class="s2">.</span><span class="s1">Intent</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">android</span><span class="s2">.</span><span class="s1">os</span><span class="s2">.</span><span class="s1">Handler</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">android</span><span class="s2">.</span><span class="s1">os</span><span class="s2">.</span><span class="s1">Looper</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">android</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">Log</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">android</span><span class="s2">.</span><span class="s1">view</span><span class="s2">.</span><span class="s1">KeyEvent</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">android</span><span class="s2">.</span><span class="s1">view</span><span class="s2">.</span><span class="s1">accessibility</span><span class="s2">.</span><span class="s1">AccessibilityEvent</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">VolumeKeyAccessibilityService </span><span class="s0">extends </span><span class="s1">AccessibilityService </span><span class="s2">{</span>
+
+    <span class="s0">private static final </span><span class="s1">String TAG </span><span class="s2">= </span><span class="s3">&quot;VolumeKeyService&quot;</span><span class="s2">;</span>
+    <span class="s0">private static </span><span class="s1">VolumeKeyAccessibilityService instance</span><span class="s2">;</span>
+    <span class="s0">private static boolean </span><span class="s1">functionEnabled </span><span class="s2">= </span><span class="s0">false</span><span class="s2">;</span>
+
+    <span class="s0">private </span><span class="s1">Handler handler </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Handler</span><span class="s2">(</span><span class="s1">Looper</span><span class="s2">.</span><span class="s1">getMainLooper</span><span class="s2">());</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">public void </span><span class="s1">onCreate</span><span class="s2">() {</span>
+        <span class="s0">super</span><span class="s2">.</span><span class="s1">onCreate</span><span class="s2">();</span>
+        <span class="s1">instance </span><span class="s2">= </span><span class="s0">this</span><span class="s2">;</span>
+        <span class="s1">Log</span><span class="s2">.</span><span class="s1">d</span><span class="s2">(</span><span class="s1">TAG</span><span class="s2">, </span><span class="s3">&quot;Accessibility service created&quot;</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">public void </span><span class="s1">onDestroy</span><span class="s2">() {</span>
+        <span class="s0">super</span><span class="s2">.</span><span class="s1">onDestroy</span><span class="s2">();</span>
+        <span class="s1">instance </span><span class="s2">= </span><span class="s0">null</span><span class="s2">;</span>
+        <span class="s1">Log</span><span class="s2">.</span><span class="s1">d</span><span class="s2">(</span><span class="s1">TAG</span><span class="s2">, </span><span class="s3">&quot;Accessibility service destroyed&quot;</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">public void </span><span class="s1">onAccessibilityEvent</span><span class="s2">(</span><span class="s1">AccessibilityEvent event</span><span class="s2">) {</span>
+        <span class="s4">// 不需要处理AccessibilityEvent，主要用于按键拦截</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">public void </span><span class="s1">onInterrupt</span><span class="s2">() {</span>
+        <span class="s1">Log</span><span class="s2">.</span><span class="s1">d</span><span class="s2">(</span><span class="s1">TAG</span><span class="s2">, </span><span class="s3">&quot;Accessibility service interrupted&quot;</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s1">@Override</span>
+    <span class="s0">protected boolean </span><span class="s1">onKeyEvent</span><span class="s2">(</span><span class="s1">KeyEvent event</span><span class="s2">) {</span>
+        <span class="s4">// 只处理音量+键的按下事件</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">event</span><span class="s2">.</span><span class="s1">getKeyCode</span><span class="s2">() == </span><span class="s1">KeyEvent</span><span class="s2">.</span><span class="s1">KEYCODE_VOLUME_UP </span><span class="s2">&amp;&amp;</span>
+                <span class="s1">event</span><span class="s2">.</span><span class="s1">getAction</span><span class="s2">() == </span><span class="s1">KeyEvent</span><span class="s2">.</span><span class="s1">ACTION_DOWN </span><span class="s2">&amp;&amp;</span>
+                <span class="s1">functionEnabled</span><span class="s2">) {</span>
+
+            <span class="s1">Log</span><span class="s2">.</span><span class="s1">d</span><span class="s2">(</span><span class="s1">TAG</span><span class="s2">, </span><span class="s3">&quot;Volume up key intercepted, performing double back&quot;</span><span class="s2">);</span>
+            <span class="s1">performDoubleBack</span><span class="s2">();</span>
+            <span class="s0">return true</span><span class="s2">; </span><span class="s4">// 拦截事件，不传递给系统</span>
+        <span class="s2">}</span>
+
+        <span class="s0">return super</span><span class="s2">.</span><span class="s1">onKeyEvent</span><span class="s2">(</span><span class="s1">event</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s5">/**</span>
+     <span class="s5">* 执行双击返回操作</span>
+     <span class="s5">*/</span>
+    <span class="s0">private void </span><span class="s1">performDoubleBack</span><span class="s2">() {</span>
+        <span class="s4">// 第一次返回</span>
+        <span class="s1">performGlobalAction</span><span class="s2">(</span><span class="s1">GLOBAL_ACTION_BACK</span><span class="s2">);</span>
+
+        <span class="s4">// 延迟100ms后执行第二次返回</span>
+        <span class="s1">handler</span><span class="s2">.</span><span class="s1">postDelayed</span><span class="s2">(() </span><span class="s1">-&gt; </span><span class="s2">{</span>
+            <span class="s1">performGlobalAction</span><span class="s2">(</span><span class="s1">GLOBAL_ACTION_BACK</span><span class="s2">);</span>
+            <span class="s1">Log</span><span class="s2">.</span><span class="s1">d</span><span class="s2">(</span><span class="s1">TAG</span><span class="s2">, </span><span class="s3">&quot;Double back action completed&quot;</span><span class="s2">);</span>
+        <span class="s2">}, </span><span class="s6">100</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s5">/**</span>
+     <span class="s5">* 启用/禁用功能</span>
+     <span class="s5">*/</span>
+    <span class="s0">public static void </span><span class="s1">setFunctionEnabled</span><span class="s2">(</span><span class="s0">boolean </span><span class="s1">enabled</span><span class="s2">) {</span>
+        <span class="s1">functionEnabled </span><span class="s2">= </span><span class="s1">enabled</span><span class="s2">;</span>
+        <span class="s1">Log</span><span class="s2">.</span><span class="s1">d</span><span class="s2">(</span><span class="s1">TAG</span><span class="s2">, </span><span class="s3">&quot;Function &quot; </span><span class="s2">+ (</span><span class="s1">enabled </span><span class="s2">? </span><span class="s3">&quot;enabled&quot; </span><span class="s2">: </span><span class="s3">&quot;disabled&quot;</span><span class="s2">));</span>
+
+        <span class="s4">// 通知悬浮窗更新状态</span>
+        <span class="s0">if </span><span class="s2">(</span><span class="s1">instance </span><span class="s2">!= </span><span class="s0">null</span><span class="s2">) {</span>
+            <span class="s1">Intent intent </span><span class="s2">= </span><span class="s0">new </span><span class="s1">Intent</span><span class="s2">(</span><span class="s3">&quot;com.example.volumekeymapper.FUNCTION_STATE_CHANGED&quot;</span><span class="s2">);</span>
+            <span class="s1">intent</span><span class="s2">.</span><span class="s1">putExtra</span><span class="s2">(</span><span class="s3">&quot;enabled&quot;</span><span class="s2">, </span><span class="s1">enabled</span><span class="s2">);</span>
+            <span class="s1">instance</span><span class="s2">.</span><span class="s1">sendBroadcast</span><span class="s2">(</span><span class="s1">intent</span><span class="s2">);</span>
+        <span class="s2">}</span>
+    <span class="s2">}</span>
+
+    <span class="s5">/**</span>
+     <span class="s5">* 获取功能状态</span>
+     <span class="s5">*/</span>
+    <span class="s0">public static boolean </span><span class="s1">isFunctionEnabled</span><span class="s2">() {</span>
+        <span class="s0">return </span><span class="s1">functionEnabled</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s5">/**</span>
+     <span class="s5">* 获取服务实例</span>
+     <span class="s5">*/</span>
+    <span class="s0">public static </span><span class="s1">VolumeKeyAccessibilityService getInstance</span><span class="s2">() {</span>
+        <span class="s0">return </span><span class="s1">instance</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s5">/**</span>
+     <span class="s5">* 检查服务是否运行</span>
+     <span class="s5">*/</span>
+    <span class="s0">public static boolean </span><span class="s1">isServiceRunning</span><span class="s2">() {</span>
+        <span class="s0">return </span><span class="s1">instance </span><span class="s2">!= </span><span class="s0">null</span><span class="s2">;</span>
+    <span class="s2">}</span>
+<span class="s2">}</span></pre>
+</body>
+</html>

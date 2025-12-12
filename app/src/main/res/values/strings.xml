@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Miao3trike</string>
+    <string name="accessibility_service_description">Miao3trike辅助功能：提供按键映射功能。将音量+键映射为双击返回键。需要此权限来拦截按键事件。</string>
+    
+        <!-- UI text for new design -->
+    <string name="header_subtitle">Map volume keys to custom actions</string>
+
+    <string name="status_stopped">Service stopped</string>
+
+    <string name="section_mapping">Key mapping</string>
+
+    <string name="label_target_app">Target app</string>
+    <string name="hint_target_package">com.example.app / package name</string>
+
+    <string name="label_volume_up">Volume Up</string>
+    <string name="hint_keycode">Key code or action</string>
+    
+        <!-- Volume down section -->
+    <string name="label_volume_down">Volume Down</string>
+
+    <!-- Main buttons -->
+    <string name="btn_save">Save</string>
+    <string name="btn_reset">Reset</string>
+
+    <!-- Floating panel -->
+    <string name="floating_title">Floating controller</string>
+    <string name="floating_subtitle">Quick access to mapped actions</string>
+
+    <!-- Start button -->
+    <string name="btn_start">Start</string>
+
+</resources>

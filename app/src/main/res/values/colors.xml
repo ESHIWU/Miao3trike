@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 基础 Material 颜色（模板保留） -->
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- 应用主题主色 -->
+    <color name="app_bg">#FF101018</color>          <!-- 整体背景 -->
+    <color name="app_light_bg">#FF1A1A24</color>   <!-- 卡片等浅一点的背景 -->
+    <color name="app_primary">#FF4CAF50</color>    <!-- 主绿色 -->
+    <color name="app_secondary">#FFFF9800</color>  <!-- 辅助橙色 -->
+
+    <!-- 文本颜色 -->
+    <color name="text_primary">#FFFFFFFF</color>
+    <color name="text_secondary">#99FFFFFF</color>
+    <color name="section_title">#FFE0E0E0</color>
+
+    <!-- 标题栏渐变 -->
+    <color name="header_start">#FF4CAF50</color>
+    <color name="header_end">#FF2E7D32</color>
+    <color name="header_title">#FFFFFFFF</color>
+
+    <!-- 卡片背景 -->
+    <color name="card_intro_bg">#331E88E5</color>
+    <color name="card_status_bg">#33FFFFFF</color>
+
+    <!-- 输入框 -->
+    <color name="input_bg">#FF191925</color>
+    <color name="input_border">#33FFFFFF</color>
+
+    <!-- 标签边框 -->
+    <color name="tag_border">#33FFFFFF</color>
+
+    <!-- 大灰按钮 -->
+    <color name="btn_gray">#FF424242</color>
+    <color name="btn_gray_dark">#FF2C2C2C</color>
+
+    <!-- 大橙按钮 -->
+    <color name="btn_orange">#FFFF9800</color>
+    <color name="btn_orange_dark">#FFE65100</color>
+
+    <!-- 小绿按钮 -->
+    <color name="btn_green">#FF4CAF50</color>
+    <color name="btn_green_dark">#FF2E7D32</color>
+
+    <!-- 悬浮按钮 -->
+    <color name="floating_enabled">#FFFFC107</color>
+    
+    <!-- 悬浮按钮：关闭/禁用状态 -->
+    <color name="floating_disabled">#66FFFFFF</color>
+    <color name="floating_ripple">#33FFC107</color>
+
+    <!-- 新加的这几行 -->
+    <color name="app_background">#FF101018</color>
+    <color name="header_subtitle">#99FFFFFF</color>
+    <color name="tag_bg">#26FFFFFF</color>
+
+</resources>
